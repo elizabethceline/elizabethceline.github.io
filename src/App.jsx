@@ -5,7 +5,7 @@ const OFFICE_LOCATION = {
   lng: 112.7735401,
 };
 
-const MAX_DISTANCE = 150; 
+const MAX_DISTANCE = 150;
 
 const AttendanceLocation = () => {
   const [location, setLocation] = useState(null);
@@ -78,10 +78,21 @@ const AttendanceLocation = () => {
       </button>
 
       {location && (
-        <div style={{ marginTop: 10 }}>
-          <p>Latitude: {location.userLat}</p>
-          <p>Longitude: {location.userLng}</p>
-          <p>Distance: {distance} meter</p>
+        <div style={{ marginTop: 15 }}>
+          <p><b>Latitude:</b> {location.userLat}</p>
+          <p><b>Longitude:</b> {location.userLng}</p>
+          <p><b>Distance:</b> {distance} meter</p>
+
+          {/* MAP PREVIEW */}
+          <iframe
+            title="My Location Map"
+            width="100%"
+            height="300"
+            style={{ border: 0, marginTop: 10 }}
+            loading="lazy"
+            allowFullScreen
+            src={`https://www.google.com/maps?q=${location.userLat},${location.userLng}&z=17&output=embed`}
+          />
         </div>
       )}
 
